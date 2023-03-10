@@ -1,0 +1,16 @@
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.exe.config
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.exe
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\bin\Debug\SumOfNumbers.pdb
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.AssemblyReference.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.SuggestedBindingRedirects.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.CoreCompileInputs.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.exe
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\SumOfNumbers\obj\Debug\SumOfNumbers.pdb
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\bin\Debug\SumOfNumbers.exe.config
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\bin\Debug\SumOfNumbers.exe
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\bin\Debug\SumOfNumbers.pdb
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.AssemblyReference.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.SuggestedBindingRedirects.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\obj\Debug\SumOfNumbers.csproj.CoreCompileInputs.cache
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\obj\Debug\SumOfNumbers.exe
+C:\Hillel\Лекція 1. GIT\SumOfNumbers\obj\Debug\SumOfNumbers.pdb
