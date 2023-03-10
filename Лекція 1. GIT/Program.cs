@@ -15,7 +15,7 @@ namespace SumOfNumbers
             for (var i = 1; i <=100; i++)
                 sum += i;
 
-            Console.WriteLine(sum);
+            Console.WriteLine($"Сума чисел вiд 1 до 100 = {sum}");
             Console.ReadLine();
 
         }
