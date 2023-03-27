@@ -24,7 +24,7 @@ namespace SecondLesson
             }
             else if (obj is IProcessor)
             {
-              processorConnector = (Processor)obj;
+              processorConnector = (IProcessor)obj;
                
             }
             else if (obj is IRam)
