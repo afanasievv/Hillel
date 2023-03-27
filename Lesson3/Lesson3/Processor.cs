@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace SecondLesson
 {
-    public class Processor : IProcessor
+    public class Processor : IProcessor, IDevice
     {
         public string processorProducer;
         public int processorFrequency;
+
+        public string ProducerName
+        { get { return processorProducer; } }
 
         public string ProcessorProducer
         {

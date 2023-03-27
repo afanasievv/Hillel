@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace SecondLesson
 {
-    public class Ram : IRam
+    public class Ram : IRam, IDevice
     {
         public string ramProducer;
         public int ramCapacity;
+
+        public string ProducerName
+        { get { return ramProducer; } }
+
+        
         public Ram(string ramProducer, int ramCapacity)
         {
             this.ramProducer = ramProducer;

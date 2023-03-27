@@ -8,6 +8,9 @@ namespace SecondLesson
 {
     public interface IDevice
     {
-        void AddDevice(object obj);
+        string ProducerName
+        { get; }
+        
+
     }
 }

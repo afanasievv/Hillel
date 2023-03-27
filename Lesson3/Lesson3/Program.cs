@@ -19,8 +19,8 @@ namespace SecondLesson
             compuctor.AddDevice(hardDisk);
             compuctor.AddDevice(processor);
             compuctor.AddDevice(ram);
-                     
 
+            Console.WriteLine((compuctor.ramConnectors[0] as Ram).ramProducer);
             Console.ReadLine();
 
         }      

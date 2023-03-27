@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace SecondLesson
 {
-    public class Computer : IDevice
+    public class Computer
     {
         private bool disposed = false;
 
-        public List<object> ramConnectors = new List<object>(4);
-        public List<object> hardDisksConnectors = new List<object>(2);
+        public List<IRam> ramConnectors = new List<IRam>(4);
+        public List<IHardDisk> hardDisksConnectors = new List<IHardDisk>(2);
         public object processorConnector;
 
-
-        public void AddDevice(object obj)
+       
+        public void AddDevice(IDevice device)
         {
-            if (obj is IHardDisk)
+            if (device is IHardDisk)
             {
-                hardDisksConnectors.Add(obj);  
+                hardDisksConnectors.Add(device as IHardDisk);  
                 
             }
-            else if (obj is IProcessor)
+            else if (device is IProcessor)
             {
-              processorConnector = (IProcessor)obj;
+              processorConnector = (IProcessor)device;
                
             }
-            else if (obj is IRam)
+            else if (device is IRam)
 
             {
-                ramConnectors.Add(obj);
+                ramConnectors.Add(device as IRam);
             }
 
         }

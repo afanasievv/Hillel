@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace SecondLesson
 {
-    public class HardDisk : IHardDisk
+    public class HardDisk : IHardDisk, IDevice
     {
         public string hardDiskProducer;
         public int hardDiskCapacity;
 
-        public string HardDiskProducer
-        { 
-            get { return hardDiskProducer; }
-        }
+        public string ProducerName
+        { get { return hardDiskProducer; } }
 
+    
         public HardDisk(string hardDiskProducer, int hardDiskCapacity)
         {
             this.hardDiskProducer = hardDiskProducer;
