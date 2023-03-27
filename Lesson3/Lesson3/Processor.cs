@@ -10,6 +10,11 @@ namespace SecondLesson
     {
         public string processorProducer;
         public int processorFrequency;
+
+        public string ProcessorProducer
+        {
+            get { return processorProducer; }
+        }
         public Processor(string processorProducer, int processorFrequency)
         {
             this.processorProducer = processorProducer;

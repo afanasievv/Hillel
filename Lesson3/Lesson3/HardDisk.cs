@@ -10,6 +10,12 @@ namespace SecondLesson
     {
         public string hardDiskProducer;
         public int hardDiskCapacity;
+
+        public string HardDiskProducer
+        { 
+            get { return hardDiskProducer; }
+        }
+
         public HardDisk(string hardDiskProducer, int hardDiskCapacity)
         {
             this.hardDiskProducer = hardDiskProducer;

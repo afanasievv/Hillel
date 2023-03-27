@@ -6,32 +6,31 @@ using System.Threading.Tasks;
 
 namespace SecondLesson
 {
-    public class Computer
+    public class Computer : IDevice
     {
         private bool disposed = false;
 
         public List<object> ramConnectors = new List<object>(4);
-        public List<object> hardDisksConnectors = new List<object>(2) { };
+        public List<object> hardDisksConnectors = new List<object>(2);
         public object processorConnector;
 
-        public void SetDevice(object obj)
+
+        public void AddDevice(object obj)
         {
             if (obj is IHardDisk)
             {
-
-                hardDisksConnectors.Add(obj);
-                //Console.WriteLine(hardDisksConnectors[0]);
+                hardDisksConnectors.Add(obj);  
+                
             }
             else if (obj is IProcessor)
             {
-                Processor proc = (Processor)obj;
-                processorConnector = proc.processorProducer;
-                //Console.WriteLine(processorConnector.);
+              processorConnector = (Processor)obj;
+               
             }
             else if (obj is IRam)
 
-            { //ramConnectors.Add((Ram)obj);
-              //Console.WriteLine(ramConnectors[0].);
+            {
+                ramConnectors.Add(obj);
             }
 
         }
@@ -52,8 +51,9 @@ namespace SecondLesson
             {
                 if (clean)
                 {
-
-
+                    ramConnectors = null;
+                    hardDisksConnectors = null;
+                    processorConnector = null;
                 }
                 Console.WriteLine("Finalized");
             }

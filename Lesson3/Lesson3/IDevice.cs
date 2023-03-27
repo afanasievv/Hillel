@@ -8,6 +8,6 @@ namespace SecondLesson
 {
     public interface IDevice
     {
-        void AddDevice();
+        void AddDevice(object obj);
     }
 }
