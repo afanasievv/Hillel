@@ -12,12 +12,11 @@ namespace Lesson4
         {
         var databaseValue= new DatabaseValue<T>();
                        
-
         }
         public class DatabaseValue<T>
-        {   public T Value { get; set; }
+        {   public T value { get; set; }
 
-            public string TableName { get; set; }
+            public string tableName { get; set; }
         }
     }
 }

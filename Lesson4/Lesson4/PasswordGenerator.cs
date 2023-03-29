@@ -1,17 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Lesson4
 {
-    public class PasswordGenerator
+    public static class PasswordGenerator
     {
-        public char[] allowedSymbols = new char[]{ };
-        public string Generate(char[] array)
+        private static char[] allowedSymbols = 
+            new String("1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM").ToCharArray();
+
+        public static string Generate(int passwordLength)
         {
-            return array[0].ToString();
+            var password = new StringBuilder();
+            if (passwordLength > allowedSymbols.Length)
+            {
+                Console.WriteLine($"Пароль має бути не довше {allowedSymbols.Length} символiв");
+                return password.ToString();
+            }
+            else
+            {
+                
+                for (int i = 0; i < passwordLength; i++)
+                {
+                    Random randomIndex = new Random();
+
+                    password.Append(allowedSymbols[randomIndex.Next(allowedSymbols.Length)]);
+                }
+
+                return password.ToString();
+            }
 
         }
     }
