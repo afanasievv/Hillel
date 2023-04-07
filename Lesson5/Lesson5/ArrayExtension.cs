@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 namespace Lesson5
 {
     public static class ArrayExtension
-    {public static IEnumerable<double> SquareRoots(this double[] array)
+    {public static IEnumerable<double> Square(this double[] array)
         {
             foreach(var number in array)
             {
                 yield return Math.Sqrt(number);
             }
         }
+       
     }
 }

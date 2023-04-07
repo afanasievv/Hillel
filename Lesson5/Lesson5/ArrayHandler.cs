@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Lesson5
 {
     public class ArrayHandler
     {
+        public delegate void Check();
         public event EventHandler<IntegerNumberEventArg> IntegerableNumber;
 
         public double[] arrayOfNumbers;
@@ -15,12 +17,14 @@ namespace Lesson5
         {
             this.arrayOfNumbers = array;
         }
-        public void SquareRoots()
+        public void SquareRoots(Check check)
         {
-            var result = arrayOfNumbers.SquareRoots();
+            double[] result = (double[])arrayOfNumbers.Square();
+            
             foreach (var number in result) ;
-            Console.WriteLine(result);
+            Console.WriteLine();
         }
+       
         
 
     }
