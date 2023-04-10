@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Lesson5
 {
     public static class ArrayExtension
-    {public static IEnumerable<double> Square(this double[] array)
+    { public static IEnumerable<double> Sqrt(this double[] array)
         {
             foreach(var number in array)
             {

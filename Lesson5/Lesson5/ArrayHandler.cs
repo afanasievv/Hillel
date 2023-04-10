@@ -9,8 +9,8 @@ namespace Lesson5
 {
     public class ArrayHandler
     {
-        public delegate bool Check(double x);
-        public event  EventHandler IntValueHandler;
+        public delegate bool CheckValue(double x);
+        public event  EventHandler  IntValueHandler;
 
         private double[] arrayOfNumbers;
         public ArrayHandler(double[] array)
@@ -18,32 +18,26 @@ namespace Lesson5
             this.arrayOfNumbers = array;
         }
 
-        public IEnumerable<double> SquareRoots(Check check)
+        public IEnumerable<double> SquareRoots(CheckValue check)
         {
-            var result = arrayOfNumbers.Square();
+            var sortArray = arrayOfNumbers.Sqrt();
 
-            foreach (double number in result)
+            foreach (double number in sortArray)
             {
                 if (check(number))
                 {
                     var args = new IntegerNumberEventArg() { Number = number };
-                    IntValueHandler(this,args);
+                    //IntValueHandler(args);
 
                     yield return number;
                         
                 }
             }           
         }
-        protected virtual void IntableValue(IntValueEventArgs e)
+        protected virtual void IntableValue(IntegerNumberEventArg e)
         {
             IntValueHandler?.Invoke(this, e);
         }  
-        public static void On_IntableValue(object sender,IntValueEventArgs e)
-        {
-            Console.WriteLine("Значення ціле");
-        }
-
-        
-
+                       
     }
 }
