@@ -10,7 +10,7 @@ namespace Lesson5
     public class ArrayHandler
     {
         public delegate bool CheckValue(double x);
-        public event  EventHandler  IntValueHandler;
+        public event  EventHandler <IntegerNumberEventArg> IntValueHandler;
 
         private double[] arrayOfNumbers;
         public ArrayHandler(double[] array)
@@ -25,13 +25,14 @@ namespace Lesson5
             foreach (double number in sortArray)
             {
                 if (check(number))
-                {
+                {                   
                     var args = new IntegerNumberEventArg() { Number = number };
-                    //IntValueHandler(args);
-
+                                            
+                    IntValueHandler(this,args);
+                    
                     yield return number;
                         
-                }
+                }   
             }           
         }
         protected virtual void IntableValue(IntegerNumberEventArg e)

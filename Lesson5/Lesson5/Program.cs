@@ -5,17 +5,14 @@ using System.Security.Cryptography.X509Certificates;
 
 
 public  class Program
-{
-   
-    
-    
+{        
     public static void Main()
     {
 
         double[] numbers = { 1, 2.5, 3, 4, 5,25,26,27 };
         ArrayHandler array = new ArrayHandler(numbers);
        
-        //array.IntValueHandler += On_IntableValue;
+        array.IntValueHandler += On_IntableValue;
 
         var test= array.SquareRoots(x => x >= 5);
        
