@@ -9,22 +9,40 @@ namespace Lesson5
 {
     public class ArrayHandler
     {
-        public delegate void Check();
-        public event EventHandler<IntegerNumberEventArg> IntegerableNumber;
+        public delegate bool Check(double x);
+        public event  EventHandler IntValueHandler;
 
-        public double[] arrayOfNumbers;
+        private double[] arrayOfNumbers;
         public ArrayHandler(double[] array)
         {
             this.arrayOfNumbers = array;
         }
-        public void SquareRoots(Check check)
+
+        public IEnumerable<double> SquareRoots(Check check)
         {
-            double[] result = (double[])arrayOfNumbers.Square();
-            
-            foreach (var number in result) ;
-            Console.WriteLine();
+            var result = arrayOfNumbers.Square();
+
+            foreach (double number in result)
+            {
+                if (check(number))
+                {
+                    var args = new IntegerNumberEventArg() { Number = number };
+                    IntValueHandler(this,args);
+
+                    yield return number;
+                        
+                }
+            }           
         }
-       
+        protected virtual void IntableValue(IntValueEventArgs e)
+        {
+            IntValueHandler?.Invoke(this, e);
+        }  
+        public static void On_IntableValue(object sender,IntValueEventArgs e)
+        {
+            Console.WriteLine("Значення ціле");
+        }
+
         
 
     }

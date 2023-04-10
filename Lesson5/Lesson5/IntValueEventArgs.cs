@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lesson5
 {
-    public class IntegerNumberEventArg: EventArgs
+    public class IntValueEventArgs: EventArgs
     {
-        public double Number { get; set; }
-
+        public int Value { get; set; }
     }
 }
