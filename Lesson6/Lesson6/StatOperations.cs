@@ -12,23 +12,22 @@ namespace Lesson6
         public Hashtable MostAppeared(HashSet<HashSet<int>> list, int n)
         {
             
-            int sum = 0;
-            int num = 0;
+           
             int count = 0;
             Hashtable hashtable = new Hashtable();
 
             foreach (var item in Convert(list))
             {
-                count = Convert(list).Count(x => x == Convert(list)[1]);
-                if (count > sum)
+                count = Convert(list).Count(x => x == item);
+                if (count >=1)
                 {
-                    sum = count;
-                    num = item;
+                    
                     hashtable.Add(item, count);
                 }
 
             }
-            Console.WriteLine($"{sum} {num}");
+            //перевірити хештейбл на N найбільших значень
+            //Console.WriteLine($"{sum} {num}");
             return hashtable;
         }
         public List<int>  NeverAppeared (HashSet<HashSet<int>> list, int n)

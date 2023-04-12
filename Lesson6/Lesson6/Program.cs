@@ -15,14 +15,11 @@ public class Program
         myList.Add(lotter.Emit(50));
         myList.Add(lotter.Emit(50));
         myList.Add(lotter.Emit(50));
-       foreach (var item in myList)
-        {
-           Console.WriteLine(String.Join(",",item));
-        }
+       
         StatOperations op= new StatOperations();
         
         Console.WriteLine(String.Join(",", op.MostAppeared(myList, 50)));
-       // Console.WriteLine(String.Join(",", op.NeverAppeared(myList, 50)));
+       Console.WriteLine(String.Join(",", op.NeverAppeared(myList, 50)));
 
     }
 
