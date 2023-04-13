@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace Lesson6
 {
@@ -12,23 +16,49 @@ namespace Lesson6
         public Hashtable MostAppeared(HashSet<HashSet<int>> list, int n)
         {
             
-           
             int count = 0;
             Hashtable hashtable = new Hashtable();
 
-            foreach (var item in Convert(list))
-            {
-                count = Convert(list).Count(x => x == item);
-                if (count >=1)
-                {
-                    
-                    hashtable.Add(item, count);
-                }
+            //foreach (var item in Convert(list))
+            //{
 
-            }
-            //перевірити хештейбл на N найбільших значень
-            //Console.WriteLine($"{sum} {num}");
+            //        if(!hashtable.ContainsKey(item))
+            //        hashtable.Add(item, count);
+
+            //}
+                int currentCount;
+                foreach(var item in Convert(list))
+                {
+                    currentCount = Convert(list).Count(x => x == x);
+                    if (currentCount==MaxCount(list))
+                    {
+                    if (!hashtable.ContainsKey(item))
+                        hashtable.Add(item, count);
+                     }
+                   
+
+                }
+            
+            //foreach (var key in hashtable.Keys)
+            //{
+            //    if ((int)hashtable[key] >= 2)
+            //        Console.WriteLine(key + " " + hashtable[key]);
+            //}
+            
             return hashtable;
+        }
+        private int MaxCount(HashSet<HashSet<int>> list)
+        {
+            int maxCount = 0;
+            foreach(var item in Convert(list))
+            {
+                int currentItemCount = Convert(list).Count(x => x == item);
+                if(currentItemCount>maxCount)
+                {
+                    maxCount= currentItemCount;
+                }
+            }
+            return maxCount;
         }
         public List<int>  NeverAppeared (HashSet<HashSet<int>> list, int n)
         {
