@@ -18,9 +18,14 @@ public class Program
         myList.Add(lotter.Emit(50));
 
         StatOperations op = new StatOperations();
-        op.MostAppeared(myList, 50);
+        foreach (var key in op.MostAppeared(myList, 50).Keys)
+        {
+           
+                Console.WriteLine(key + " " + op.MostAppeared(myList, 50)[key]);
+        }
+       
        // Console.WriteLine(value);
-        Console.WriteLine(String.Join(",", op.NeverAppeared(myList, 50)));
+        //Console.WriteLine(String.Join(",", op.NeverAppeared(myList, 50)));
 
 
     }

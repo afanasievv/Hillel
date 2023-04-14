@@ -18,6 +18,7 @@ namespace Lesson6
             
             int count = 0;
             Hashtable hashtable = new Hashtable();
+            hashtable.Add(1, count);
 
             //foreach (var item in Convert(list))
             //{
@@ -26,16 +27,18 @@ namespace Lesson6
             //        hashtable.Add(item, count);
 
             //}
+            int maxCount = MaxCount(list);
                 int currentCount;
                 foreach(var item in Convert(list))
                 {
                     currentCount = Convert(list).Count(x => x == x);
-                    if (currentCount==MaxCount(list))
+                    if (currentCount==maxCount)
                     {
+                    Console.WriteLine("dfd");
                     if (!hashtable.ContainsKey(item))
-                        hashtable.Add(item, count);
+                        hashtable.Add(item, currentCount);
                      }
-                   
+                maxCount-=1;
 
                 }
             
