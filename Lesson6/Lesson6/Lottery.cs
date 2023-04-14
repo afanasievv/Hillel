@@ -12,9 +12,9 @@ namespace Lesson6
         {  Random random = new Random();
 
            HashSet<int> listOfUniqueNumbers = new HashSet<int>();
-           while(listOfUniqueNumbers.Count<5)
+           while(listOfUniqueNumbers.Count<6)
             {                
-                listOfUniqueNumbers.Add(random.Next(1,countOfUniqueNumbers));
+                listOfUniqueNumbers.Add(random.Next(1,countOfUniqueNumbers+1));
             }
            return listOfUniqueNumbers;
         }

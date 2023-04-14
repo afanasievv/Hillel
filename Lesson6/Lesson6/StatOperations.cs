@@ -13,49 +13,33 @@ namespace Lesson6
 {
     public class StatOperations
     {
-        public Hashtable MostAppeared(HashSet<HashSet<int>> list, int n)
-        {
-            
-            int count = 0;
+        public Hashtable MostAppeared(HashSet<HashSet<int>> hashSet, int n)
+        {           
             Hashtable hashtable = new Hashtable();
-            hashtable.Add(1, count);
-
-            //foreach (var item in Convert(list))
-            //{
-
-            //        if(!hashtable.ContainsKey(item))
-            //        hashtable.Add(item, count);
-
-            //}
-            int maxCount = MaxCount(list);
+                       
+            int maxCount = MaxCount(hashSet);
                 int currentCount;
-                foreach(var item in Convert(list))
+
+            foreach (var item in ConvertToList(hashSet))
+            { 
+                
+                currentCount = ConvertToList(hashSet).Count(x => x == item);
+                if (!hashtable.ContainsKey(item))
                 {
-                    currentCount = Convert(list).Count(x => x == x);
-                    if (currentCount==maxCount)
-                    {
-                    Console.WriteLine("dfd");
-                    if (!hashtable.ContainsKey(item))
-                        hashtable.Add(item, currentCount);
-                     }
-                maxCount-=1;
+                    hashtable.Add(item, currentCount);
 
                 }
-            
-            //foreach (var key in hashtable.Keys)
-            //{
-            //    if ((int)hashtable[key] >= 2)
-            //        Console.WriteLine(key + " " + hashtable[key]);
-            //}
-            
+                  
+            }
+               
             return hashtable;
         }
-        private int MaxCount(HashSet<HashSet<int>> list)
+        private int MaxCount(HashSet<HashSet<int>> hashSet)
         {
             int maxCount = 0;
-            foreach(var item in Convert(list))
+            foreach(var item in ConvertToList(hashSet))
             {
-                int currentItemCount = Convert(list).Count(x => x == item);
+                int currentItemCount = ConvertToList(hashSet).Count(x => x == item);
                 if(currentItemCount>maxCount)
                 {
                     maxCount= currentItemCount;
@@ -63,23 +47,24 @@ namespace Lesson6
             }
             return maxCount;
         }
-        public List<int>  NeverAppeared (HashSet<HashSet<int>> list, int n)
+        public List<int>  NeverAppeared (HashSet<HashSet<int>> list)
         {
+            int n=list.Count;
             
             List<int> res = new List<int>();
-            for (int i= 1; i < n; i++)
+            for (int i= 1; i < 42; i++)
             { 
-              if (!Convert(list).Contains(i))
+              if (!ConvertToList(list).Contains(i))
                     { res.Add(i); }
                     
             }
             return res;
         }
-        public List<int> Convert(HashSet<HashSet<int>> list)
+        public List<int> ConvertToList(HashSet<HashSet<int>> hashSet)
         {
             List<int> result = new List<int>();
 
-            foreach (var item in list)
+            foreach (var item in hashSet)
             {
                 foreach (var ch in item)
                 { result.Add(ch); }
