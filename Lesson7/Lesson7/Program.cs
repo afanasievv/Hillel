@@ -20,8 +20,9 @@
         var thread4 = new Thread(() => { CheckSquareRootIsInteger(thirdQuarterBorder, fourthQuarterBorder); });
 
         List<Thread> threads = new List<Thread>() { thread1, thread2, thread3, thread4 };
-        threads.ForEach(thread => { thread.Start(); thread.Join(); });
+        threads.ForEach(thread => { thread.Start();});
         
+        //while(threads.Any(t=>t.ThreadState != ThreadState.Stopped));
         Console.WriteLine(String.Join(",", resultList));
 
     }
