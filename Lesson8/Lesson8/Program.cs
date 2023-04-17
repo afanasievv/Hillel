@@ -9,20 +9,17 @@ class Program
     static Object oddLockObject = new Object();
 
     static void Main()
-    {
-        Thread thread1 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread2 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread3 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread4 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread5 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread6 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread7 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread8 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread9 = new Thread(() => { RandomNumberGenerete(); });
-        Thread thread10 = new Thread(() => { RandomNumberGenerete(); });
 
-        List<Thread> threads = new List<Thread>(){ thread1, thread2, thread3, thread4, thread5,
-                                                   thread6, thread7, thread8, thread9, thread10, };
+    {
+        int threadCount = 10;
+        List<Thread> threads = new List<Thread>();
+
+        for(int i=0; i<threadCount; i++) 
+        {
+            threads.Add(new Thread(() => { RandomNumberGenerete(); }));
+        }
+                
+      
         threads.ForEach(t => { t.Start(); });
         threads.ForEach(t => { t.Join(); });
 
