@@ -1,53 +1,63 @@
-﻿class Program
-{   static AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+﻿using System.Runtime.InteropServices;
+using System.Threading;
+
+class Program
+
+{   
     static void Main()
     {
-        const int sumThreadCount = 4;
-
-        List<int> arrayOfNumbers=new List<int>();
-
-        for (int i = 0; i < 10; i++)
-            arrayOfNumbers.Add(1);//new Random().Next(1,20));
-
-        int[]result=new int[sumThreadCount];
+        Object lockObject = new object();
+        CountdownEvent countdown = new CountdownEvent(1);
+        List<int> arrayOfNumbers = new List<int>();
+        List<Thread> threads = new List<Thread>();
+        int result = 0;
+        int threadSumCount = 4;        
+        int arrayOfNumbersCount = 100000;
+        int partLenght = arrayOfNumbersCount / threadSumCount; 
        
-        int partLenght = arrayOfNumbers.Count / sumThreadCount;
+        for (int i = 0; i < arrayOfNumbersCount; i++)
+            arrayOfNumbers.Add(new Random().Next(1, 20));
 
-        Thread thread = new Thread(() =>
-            {
-                if (arrayOfNumbers.Count(x => x <= 0) > 0)
-                    Console.WriteLine("В масиві присутні від'ємні числа!");
-                else autoResetEvent.Set();
-
-            });
-
-        thread.Start();
-        thread.Join();
-
-        for (int i = 0;i < sumThreadCount; i++)
+        for (int i = 0;i < threadSumCount; i++)
         {
             int startIndex = i * partLenght;
-            int endIndex = i==sumThreadCount-1? arrayOfNumbers.Count:(i+1)*partLenght;
-            (new Thread(() => 
-            {
-                autoResetEvent.WaitOne();
-                int sum=0;
-                for(int j= startIndex; j < endIndex; j++)
+            int endIndex = i==threadSumCount-1? arrayOfNumbersCount:(i+1)*partLenght;
+            var thread = new Thread(id => {
+                countdown.Wait();
+                Console.WriteLine($"Thread {id} started");
+                int sum = 0;
+                for (int j = startIndex; j < endIndex; j++)
                 {
                     sum += arrayOfNumbers[j];
                 }
-                 result[i] = sum;
-
-            })).Start();
-         
+                lock (lockObject)
+                    result += sum;
+                Console.WriteLine($"Thread {id} result is {sum}");
+                
+            });
+            threads.Add(thread);
+            thread.Start(i+1);
         }
-        int totalSum = 0;
-        foreach(int i in result)
+
+        Thread thread5 = new Thread(() =>
         {
-            totalSum += i;
-        }
+            Console.WriteLine("Thread 5 started");
+            if (arrayOfNumbers.Count(x => x <= 0) == 0)
+            {
+                Console.WriteLine("There are no negative numbers in array");
+                countdown.Signal();
+            }
 
-        Console.WriteLine(totalSum);
+        });
+        thread5.Start();
+        threads.Add(thread5);
+
+        foreach (Thread thread in threads)
+            thread.Join();
+
+        Console.WriteLine($"Sum = {result}");
+        Console.ReadLine();
        
     }
+    
 }
