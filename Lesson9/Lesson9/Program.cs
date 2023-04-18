@@ -3,11 +3,11 @@ using System.Threading;
 
 class Program
 
-{   
+{  
     static void Main()
     {
         Object lockObject = new object();
-        CountdownEvent countdown = new CountdownEvent(1);
+        ManualResetEvent manualResetEvent = new ManualResetEvent(false);
         List<int> arrayOfNumbers = new List<int>();
         List<Thread> threads = new List<Thread>();
         int result = 0;
@@ -23,7 +23,7 @@ class Program
             int startIndex = i * partLenght;
             int endIndex = i==threadSumCount-1? arrayOfNumbersCount:(i+1)*partLenght;
             var thread = new Thread(id => {
-                countdown.Wait();
+                manualResetEvent.WaitOne();
                 Console.WriteLine($"Thread {id} started");
                 int sum = 0;
                 for (int j = startIndex; j < endIndex; j++)
@@ -45,7 +45,7 @@ class Program
             if (arrayOfNumbers.Count(x => x <= 0) == 0)
             {
                 Console.WriteLine("There are no negative numbers in array");
-                countdown.Signal();
+                manualResetEvent.Set();
             }
 
         });
