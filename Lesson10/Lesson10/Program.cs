@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 class Program
@@ -8,7 +9,7 @@ class Program
     {
         Object lockObject = new object();
         List<int> arrayOfNumbers = new List<int>();
-        List<Task> tasks = new List<Task>();
+        List<Task> listOfTasks = new List<Task>();
         int result = 0;
         int taskSumCount = 4;
         int arrayOfNumbersCount = 100000;
@@ -50,9 +51,12 @@ class Program
                     Console.WriteLine($"Task result is {sum}");
                 }
             });
-                       
+            listOfTasks.Add(task);
+
+
         }
-        Thread.Sleep(1000);
+
+        Task.WaitAll(listOfTasks.ToArray());
         Console.WriteLine($"Sum = {result}");
         Console.ReadLine();
 
