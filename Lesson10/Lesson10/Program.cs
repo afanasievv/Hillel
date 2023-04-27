@@ -7,25 +7,39 @@ class Program
     static void Main()
     {
         Object lockObject = new object();
-        //ManualResetEvent manualResetEvent = new ManualResetEvent(false);
         List<int> arrayOfNumbers = new List<int>();
-        List<Task> threads = new List<Task>();
+        List<Task> tasks = new List<Task>();
         int result = 0;
-        int threadSumCount = 4;
+        int taskSumCount = 4;
         int arrayOfNumbersCount = 100000;
-        int partLenght = arrayOfNumbersCount / threadSumCount;
+        int partLenght = arrayOfNumbersCount / taskSumCount;
 
         for (int i = 0; i < arrayOfNumbersCount; i++)
             arrayOfNumbers.Add(new Random().Next(1, 20));
 
-        for (int i = 0; i < threadSumCount; i++)
+
+        var task5 = Task.Run(() =>
+        {
+            Console.WriteLine("Task 5 started");
+            if (arrayOfNumbers.Count(x => x <= 0) == 0)
+            {
+                Console.WriteLine("There are no negative numbers in array");
+                                
+                return true;
+            }
+            else return false;
+
+        });
+
+        
+        for (int i = 0; i < taskSumCount; i++)
         {
             int startIndex = i * partLenght;
-            int endIndex = i == threadSumCount - 1 ? arrayOfNumbersCount : (i + 1) * partLenght;
-            var task = new Task(async () => {
-                if (await Method())
+            int endIndex = i == taskSumCount - 1 ? arrayOfNumbersCount : (i + 1) * partLenght;
+            var task =  Task.Run(async () => {
+                if (await task5)
                 {
-                    Console.WriteLine($"Thread started");
+                    Console.WriteLine($"Task started");
                     int sum = 0;
                     for (int j = startIndex; j < endIndex; j++)
                     {
@@ -33,38 +47,12 @@ class Program
                     }
                     lock (lockObject)
                         result += sum;
-                    Console.WriteLine($"Thread result is {sum}");
+                    Console.WriteLine($"Task result is {sum}");
                 }
             });
-           threads.Add(task);
-            //task.Start();
+                       
         }
-
-        async  Task<bool> Method()
-        {
-             await Task<bool>.Run(() =>
-            {
-                Console.WriteLine("Thread 5 started");
-                if (arrayOfNumbers.Count(x => x <= 0) == 0)
-                {
-                    Console.WriteLine("There are no negative numbers in array");
-
-                    // manualResetEvent.Set();
-                    return true;
-                }
-                else return true;
-
-
-            });
-            return true;
-        }
-        
-        //thread5.Start();
-        //threads.Add(thread5);
-
-        //foreach (Thread thread in threads)
-        //    thread.Join();
-
+        Thread.Sleep(1000);
         Console.WriteLine($"Sum = {result}");
         Console.ReadLine();
 
