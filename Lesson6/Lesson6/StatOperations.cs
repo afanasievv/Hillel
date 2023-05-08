@@ -18,20 +18,22 @@ namespace Lesson6
             Hashtable hashtable = new Hashtable();
                        
             int maxCount = MaxCount(hashSet);
+            
                 int currentCount;
+            while (hashtable.Count < n)
+            {
+                foreach (var item in ConvertToList(hashSet))
+                {   if (hashtable.Count == n )break;
+                    currentCount = ConvertToList(hashSet).Count(x => x == item);
+                    if (!hashtable.ContainsKey(item) && currentCount == maxCount)
+                    {
+                        hashtable.Add(item, currentCount);
 
-            foreach (var item in ConvertToList(hashSet))
-            { 
-                
-                currentCount = ConvertToList(hashSet).Count(x => x == item);
-                if (!hashtable.ContainsKey(item))
-                {
-                    hashtable.Add(item, currentCount);
+                    }
 
                 }
-                  
+                maxCount--;
             }
-               
             return hashtable;
         }
         private int MaxCount(HashSet<HashSet<int>> hashSet)
@@ -58,6 +60,8 @@ namespace Lesson6
                     { res.Add(i); }
                     
             }
+            if(res.Count==0)
+            Console.WriteLine("Never appeared numbers is absent");
             return res;
         }
         public List<int> ConvertToList(HashSet<HashSet<int>> hashSet)
