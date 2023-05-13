@@ -13,13 +13,13 @@ namespace Lesson6
 {
     public class StatOperations
     {
-        public Hashtable MostAppeared(HashSet<HashSet<int>> hashSet, int n)
+        public void MostAppeared(HashSet<HashSet<int>> hashSet, int n)
         {           
             Hashtable hashtable = new Hashtable();
                        
             int maxCount = MaxCount(hashSet);
             
-                int currentCount;
+            int currentCount;
             while (hashtable.Count < n)
             {
                 foreach (var item in ConvertToList(hashSet))
@@ -34,22 +34,15 @@ namespace Lesson6
                 }
                 maxCount--;
             }
-            return hashtable;
-        }
-        private int MaxCount(HashSet<HashSet<int>> hashSet)
-        {
-            int maxCount = 0;
-            foreach(var item in ConvertToList(hashSet))
+            
+            foreach (var key in hashtable.Keys)
             {
-                int currentItemCount = ConvertToList(hashSet).Count(x => x == item);
-                if(currentItemCount>maxCount)
-                {
-                    maxCount= currentItemCount;
-                }
+                Console.WriteLine("The number " + key + " appeares " + hashtable[key] + " times");
             }
-            return maxCount;
+
         }
-        public List<int>  NeverAppeared (HashSet<HashSet<int>> list)
+        
+        public void  NeverAppeared (HashSet<HashSet<int>> list)
         {
             int n=list.Count;
             
@@ -61,8 +54,21 @@ namespace Lesson6
                     
             }
             if(res.Count==0)
-            Console.WriteLine("Never appeared numbers is absent");
-            return res;
+            Console.WriteLine("Never appeared numbers is absent\n");
+            else Console.WriteLine("Numbers that never appeared:" + String.Join(",", res)+"\n");
+        }
+        private int MaxCount(HashSet<HashSet<int>> hashSet)
+        {
+            int maxCount = 0;
+            foreach (var item in ConvertToList(hashSet))
+            {
+                int currentItemCount = ConvertToList(hashSet).Count(x => x == item);
+                if (currentItemCount > maxCount)
+                {
+                    maxCount = currentItemCount;
+                }
+            }
+            return maxCount;
         }
         public List<int> ConvertToList(HashSet<HashSet<int>> hashSet)
         {
