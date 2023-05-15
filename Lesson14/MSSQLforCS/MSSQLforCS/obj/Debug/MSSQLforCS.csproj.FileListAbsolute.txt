@@ -1,0 +1,13 @@
+C:\Hillel\MSSQLforCS\MSSQLforCS\bin\Debug\TestDB.mdf
+C:\Hillel\MSSQLforCS\MSSQLforCS\bin\Debug\TestDB_log.ldf
+C:\Hillel\MSSQLforCS\MSSQLforCS\bin\Debug\MSSQLforCS.exe.config
+C:\Hillel\MSSQLforCS\MSSQLforCS\bin\Debug\MSSQLforCS.exe
+C:\Hillel\MSSQLforCS\MSSQLforCS\bin\Debug\MSSQLforCS.pdb
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.csproj.AssemblyReference.cache
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.csproj.SuggestedBindingRedirects.cache
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.Form1.resources
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.Properties.Resources.resources
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.csproj.GenerateResource.cache
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.csproj.CoreCompileInputs.cache
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.exe
+C:\Hillel\MSSQLforCS\MSSQLforCS\obj\Debug\MSSQLforCS.pdb
