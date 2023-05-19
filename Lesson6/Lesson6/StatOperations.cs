@@ -70,7 +70,7 @@ namespace Lesson6
             }
             return maxCount;
         }
-        public List<int> ConvertToList(HashSet<HashSet<int>> hashSet)
+        private List<int> ConvertToList(HashSet<HashSet<int>> hashSet)
         {
             List<int> result = new List<int>();
 

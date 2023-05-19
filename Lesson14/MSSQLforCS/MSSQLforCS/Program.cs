@@ -17,6 +17,7 @@ namespace MSSQLforCS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Hillel\MSSQLforCS\MSSQLforCS\TestDB.mdf;Integrated Security=True
         }
     }
 }

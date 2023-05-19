@@ -25,10 +25,8 @@ namespace MSSQLforCS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "testDBDataSet.Students". При необходимости она может быть перемещена или удалена.
-            this.studentsTableAdapter.Fill(this.testDBDataSet.Students);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "testDBDataSet.Groups". При необходимости она может быть перемещена или удалена.
-            this.groupsTableAdapter.Fill(this.testDBDataSet.Groups);
+            
+            
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["TestDB"].ConnectionString);
             sqlConnection.Open();
             secsqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["MSSQLforCS.Properties.Settings.TestDBConnectionString"].ConnectionString);

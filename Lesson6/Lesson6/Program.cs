@@ -16,7 +16,7 @@ public class Program
 
         for (int i = 0; i < 10; i++)
             myList10.Add(lotter.Emit(42));
-
+            
         for (int i = 0; i < 50; i++)
             myList50.Add(lotter.Emit(42));
 
