@@ -12,7 +12,7 @@ namespace Lesson17
         public int CountryId { get; set; }
         public string Name { get; set; }
         public int Population { get; set; } = 0;
-        public int YearOfFoundation { get; set; }
+        public int FoundationDate { get; set; }
         public bool IsCapital { get; set; }
         
     }
