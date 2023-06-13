@@ -4,101 +4,107 @@
     <title>Моє резюме</title>
     <meta charset="utf-8">
     <meta name="keywords" content="My CV">
+    <link rel="stylesheet" href="style.css"/>
 </head>
     <body>
-        <main>
-            <img src="" alt="Фото не загрузилось(" />
-            <h1>Зворотний зв'язок</h1>
+        <main class="container">
+            <section class="item_1">
+                <section>
+                    <img class="img" src="test.jpg" alt="Фото не загрузилось(" />
+                </section>
+                <section >
 
-            <section>
-                <h1>Віктор Афанасьєв</h1>
-                <h3>C#/.NET розробник</h3>
-                <p>
-                    Вік: 25 років
-                </p>
+                    <h2 class="section-title"> Контактна інформація</h2>
+
+                    <h3>Телефон</h3>
+                    <p>(073)-74-94-527</p>
+
+                    <h3>Email</h3>
+                    <p>af.vic97@gmail.com</p>
+
+                    <h3>Адреса</h3>
+                    <p>м.Київ, просп. Любомира Гузара 46Б</p>
+
+                    <h2 class="section-title">Освіта</h2>
+                    <p>2019</p>
+                    <h3>Диплом магістра, спеціальність "Інформаційні системи та технології" </h3>
+                    <p>ВІТІ ім. героїв Крут</p>
+
+                    <p>2023</p>
+                    <h3 >Курс C# Pro</h3>
+                    <p>Hillel IT Shcool</p>
+
+                    <h2 class="section-title">Навички</h2>
+                    <ul>
+                        <li>ООП</li>
+                        <li>SQL</li>
+                        <li>HTML</li>
+                    </ul>
+
+                    <h2 class="section-title">Якості</h2>
+                    <ul>
+                        <li>Уважність</li>
+                        <li>Педантичність</li>
+                        <li>Дисциплінованість</li>
+                        <li>Aктивність</li>
+                    </ul>
+                    <h2 class="section-title">Знання мов</h2>
+                    <ul>
+                        <li>Українська</li>
+                        <li>Англійська</li>
+                    </ul>
+                </section>
             </section>
+            <section  class="item_2">
 
-            <section>
+                <section >
+                    <h1 class="regals">Віктор Афанасьєв</h1>
+                    <h3 class="lineheight">C#/.NET розробник</h3>
+                    <p>
+                        Вік: 25 років
+                    </p>
+                </section>
+                <section class="vl">
+                    <h2 class="section_title_grey">Досвід роботи</h2>
+                    <p class="circle">2019-2020</p>
+                    <h3>Збройні сили України</h3>
+                    <h4>Офіцер штабу з АСУ механізованого батальйону</h4>
 
-                <h2>Контактна інформація</h2>
+                    <p class="circle">2020 - дотепер</p>
+                    <h3>Органи державної безпеки</h3>
+                    <h4>Спеціаліст з захисту інформації</h4>
 
-                <h3>Телефон</h3>
-                <p>(073)-74-94-527</p>
+                </section>
 
-                <h3>Email</h3>
-                <p>af.vic97@gmail.com</p>
+                <section >
+                    <h2 class="section_title_grey">Рекомендації</h2>
+                    <h3>Дем'яненко Артем</h3>
+                    <p>Начальник відділу</p>
+                    <p>Phone: 050-00-000-00</p>
+                    <p>Email: example@gmail.com</p>
+                </section>
+                <section>
+                    <h3 class="section_title_grey">Зворотній звязок</h3>
+                    <form action="надіслати.php" method="POST">
+                        <label for="ім'я">Ім'я:</label>
+                        <input type="text" id="ім'я" name="ім'я" required><br><br>
 
-                <h3>Адреса</h3>
-                <p>м.Київ, просп. Любомира Гузара 46Б</p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required><br><br>
 
-                <h2>Освіта</h2>
-                <p>2019</p>
-                <h3>Диплом магістра, спеціальність "Інформаційні системи та технології" </h3>
-                <p>ВІТІ ім. героїв Крут</p>
+                        <label for="повідомлення">Повідомлення:</label><br>
+                        <textarea id="повідомлення" name="повідомлення" rows="4" cols="50" required></textarea><br><br>
 
-                <p>2023</p>
-                <h3>Курс C# Pro</h3>
-                <p>Hillel IT Shcool</p>
-
-                <h2>Навички</h2>
-                <ul>
-                    <li>ООП</li>
-                    <li>SQL</li>
-                    <li>HTML</li>
-                </ul>
-
-                <h2>Якості</h2>
-                <ul>
-                    <li>Уважність</li>
-                    <li>Педантичність</li>
-                    <li>Дисциплінованість</li>
-                    <li>Aктивність</li>
-                </ul>
-                <h2>Знання мов</h2>
-                <ul>
-                    <li>Українська</li>
-                    <li>Англійська</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Досвід роботи</h2>
-                <p>2019-2020</p>
-                <h3>Збройні сили України</h3>
-                <h4>Офіцер штабу з АСУ механізованого батальйону</h4>
-
-                <p>2020 - дотепер</p>
-                <h3>Органи державної безпеки</h3>
-                <h4>Спеціаліст з захисту інформації</h4>
-
-            </section>
-
-            <section>
-                <h2>Рекомендації</h2>
-                <h3>Дем'яненко Артем</h3>
-                <p>Начальник відділу</p>
-                <p>Phone: 050-00-000-00</p>
-                <p>Email: example@gmail.com</p>
-            </section>
-            <section>
-                <h3>Зворотній звязок</h3>
-                <form action="надіслати.php" method="POST">
-                    <label for="ім'я">Ім'я:</label>
-                    <input type="text" id="ім'я" name="ім'я" required><br><br>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required><br><br>
-
-                    <label for="повідомлення">Повідомлення:</label><br>
-                    <textarea id="повідомлення" name="повідомлення" rows="4" cols="50" required></textarea><br><br>
-
-                    <input type="submit" value="Надіслати">
-                </form>
+                        <input type="submit" value="Надіслати">
+                    </form>
+                </section>
             </section>
         </main>
 
-         <footer>
-            <p>© 2023 Іван Іванов</p>
+         <footer >
+            <p class="footer_align">© 2023 Віктор Афанасьєв</p>
           </footer>
     </body>
 
 </html>
+
