@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Formats.Asn1.AsnWriter;
 
-namespace Lesson16
+namespace Lesson16.Models
 {
-    public class StoreNetwork
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
