@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lesson17
 {
-    public class Mainland
+    public class Continent
     {
         public int Id { get; set; }
-        public string MainlandName { get; set; } = string.Empty;
+        public string ContinentName { get; set; } = string.Empty;
     }
 }

@@ -2,9 +2,12 @@
     display: flex;
     
 }
-.img{
-    height:200px;
-    width:300px;
+.img {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
 }
 .item_1 {
     padding:75px;
@@ -22,9 +25,10 @@
     
     flex: 3
 }
-.regals{
+.name{
     font-size:60px;
     font-weight:400;
+    margin-top:-70px;
 }
 .text{
     color:white;
@@ -33,40 +37,50 @@
     line-height: 1;
     margin-top: -50px;
 }
+section{
+    padding:20px;
+}
 .section-title {
     font-size: 24px;
     font-weight: bold;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
     padding-bottom: 10px;
-    margin-bottom: 20px;
+   
 
 }
+
 .section_title_grey {
+
     font-size: 24px;
     font-weight: bold;
-    border-bottom: 1px solid #505050;
+    border-bottom: 2px solid #505050;
     padding-bottom: 10px;
     margin-bottom: 20px;
     margin-top:20px;
 }
 .vl {
-    border-left: 1px solid #505050;
-    height: 250px;
+    border-left: 2px solid #505050;
+    height: 200px;
+    padding-top:0px;
     
 }
-.programmer{
-    
-}
-.footer_align {
+
+footer{
     
     text-align: center;
 }
+
+
+
 .circle {
     width: 5px;
     height: 5px;
     background-color: #505050;
     border-radius: 50%;
-    /*margin-top:*/ 
+
+
+
+   
 }
 /*.vl::before {
     content: "";

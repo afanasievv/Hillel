@@ -1,12 +1,12 @@
 ﻿
 using Lesson17;
 
-var mainlands = new List<Mainland>
-{ new Mainland(){Id=1,MainlandName="Africa"},
-  new Mainland(){Id=2,MainlandName="North America"},
-  new Mainland(){Id=3,MainlandName="South America"},
-  new Mainland(){Id=4,MainlandName="Australia"},
-  new Mainland(){Id=5,MainlandName="Eurasia"},
+var continents = new List<Continent>
+{ new Continent(){Id=1,ContinentName="Africa"},
+  new Continent(){Id=2,ContinentName="North America"},
+  new Continent(){Id=3,ContinentName="South America"},
+  new Continent(){Id=4,ContinentName="Australia"},
+  new Continent(){Id=5,ContinentName="Eurasia"},
 
 };
 
@@ -21,8 +21,6 @@ var countries = new List<Country>
 
 var cities = new List<City>
 { new City(){Id=1,Name="Сairo", CountryId=5, Population=9000000, FoundationDate=969,IsCapital=true},
-  new City(){Id=5666,Name="Сairo1", CountryId=5, Population=9000000, FoundationDate=969,IsCapital=true},
-  new City(){Id=5666,Name="Сairo2", CountryId=5, Population=9000000, FoundationDate=969,IsCapital=true},
   new City(){Id=2,Name="Rio de Janeiro", CountryId=4, Population=7000000, FoundationDate=1565,IsCapital=false},
   new City(){Id=3,Name="Melburn", CountryId=3, Population=5000000, FoundationDate=1835,IsCapital=false},
   new City(){Id=4,Name="Canberra", CountryId=3, Population=395000, FoundationDate=1913,IsCapital=true},
@@ -31,23 +29,23 @@ var cities = new List<City>
   new City(){Id=7,Name="Warsaw", CountryId=1, Population=2000000, FoundationDate=1300,IsCapital=true},
 };
 
-//Виведення кількості країн по континентах
-var countriesByContinent = mainlands
+// кількість країн по континентах
+var countriesByContinent = continents
             .Select(c => new
             {
-                Continent = c.MainlandName,
+                Continent = c.ContinentName,
                 CountryCount = countries.Count(country =>
                 country.MainlandId == c.Id)
             });
-Console.WriteLine("Кiлькiсть краiн по континентах:");
 
+Console.WriteLine("Кiлькiсть краiн по континентах:");
 foreach (var item in countriesByContinent)
 {
     Console.WriteLine($"{item.Continent}: {item.CountryCount}");
 }
 
 
-//Топ-3 мiста за населенням без урахування тих, що були заснованi пiсля 1200 року
+//топ-3 міст за населенням без урахування тих, що були засновані після 1200 року
 var topCities = cities.Where(c => c.FoundationDate <= 1200)
                      .OrderByDescending(c => c.Population)
                      .Take(3);
@@ -58,7 +56,7 @@ foreach (var city in topCities)
 }
 
 
-//Виведення країни з найбільшим населенням і її столиці:
+//Країни з найбільшим населенням і їх столиці:
 var countryWithLargestPopulation = countries.OrderByDescending(c => cities.FirstOrDefault(ct => ct.CountryId == c.Id)?.Population)
                                            .FirstOrDefault();
 if (countryWithLargestPopulation != null)
@@ -67,8 +65,8 @@ if (countryWithLargestPopulation != null)
     Console.WriteLine($"\nКраїна з найбiльшим населенням: {countryWithLargestPopulation.Name}, Столиця: {capital?.Name}\n");
 }
 
-// континенти з найбильшою кількістю міст, в яких населення перевищує 1000000
-var continentsWithLargeCities = cities.Where(c => c.Population > 100)
+// континенти з найбільшою кількістю міст, в яких населення перевищує 1000000
+var continentsWithLargeCities = cities.Where(c => c.Population > 1000000)
                                       .Join(countries, city => city.CountryId, country => country.Id, (city, country) => new { city, country })
                                       .GroupBy(x => x.country.MainlandId)
                                       .Select(g => new { ContinentId = g.Key, CityCount = g.Count() })
@@ -76,6 +74,6 @@ var continentsWithLargeCities = cities.Where(c => c.Population > 100)
 
 foreach (var item in continentsWithLargeCities)
 {
-    var continent = mainlands.FirstOrDefault(c => c.Id == item.ContinentId);
-    Console.WriteLine($"Континент: {continent?.MainlandName}, Кiлькiсть мiст: {item.CityCount}");
+    var continent = continents.FirstOrDefault(c => c.Id == item.ContinentId);
+    Console.WriteLine($"Континент: {continent?.ContinentName}, Кiлькiсть мiст: {item.CityCount}");
 }
