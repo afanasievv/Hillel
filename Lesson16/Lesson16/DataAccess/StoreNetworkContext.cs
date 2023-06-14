@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Lesson16
+namespace Lesson16.DataAccess
 {
-    public class StoreNetworkContext: DbContext
+    public class StoreNetworkContext : DbContext
     {
-        public StoreNetworkContext(): base()
+        public StoreNetworkContext() : base()
         {
 
         }
@@ -22,9 +22,9 @@ namespace Lesson16
         }
 
         public DbSet<StoreNetwork> StoreNetworks { get; set; }
-        public DbSet<Store> Stores {get; set; } 
-        public DbSet<Product> Products {get; set; }
-        
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Store>()
@@ -37,7 +37,7 @@ namespace Lesson16
                 .WithMany(p => p.Stores)
                 .UsingEntity(j => j.ToTable("StoreProduct"));
 
-        }   
-        
+        }
+
     }
 }
