@@ -1,5 +1,8 @@
 ﻿using Lesson24;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 [ApiController]
@@ -7,44 +10,22 @@ using System.Text.RegularExpressions;
 public class GroupController : ControllerBase
 {
     private static List<StudentGroup> cachedGroups = new List<StudentGroup>();
-    
 
     [HttpPost]
     public IActionResult Post([FromBody] StudentGroup group)
     {
-        
-        if (!ValidateGroup(group))
+        var validationResults = new List<ValidationResult>();
+        var validationContext = new ValidationContext(group);
+        if (!Validator.TryValidateObject(group, validationContext, validationResults, true))
         {
-            return BadRequest("Некоректні дані групи");
+            var errorMessages = validationResults.Select(result => result.ErrorMessage);
+            return BadRequest(errorMessages);
         }
-
-        
         if (!IsGroupInCache(group))
-        {           
+        {
             cachedGroups.Add(group);
         }
         return Ok(cachedGroups);
-    }
-
-    private bool ValidateGroup(StudentGroup group)
-    {
-        if (string.IsNullOrEmpty(group.Name) || group.Name.Length < 2 || group.Name.Length > 5)
-        {
-            return false;
-        }
-
-        if (group.Course <= 0 || group.Course >= 7)
-        {
-            return false;
-        }
-
-        Regex regex = new Regex(@"^[A-Za-z]{3}-\d{2}$");
-        if (!regex.IsMatch(group.Name))
-        {
-            return false;
-        }
-
-        return true;
     }
 
     private bool IsGroupInCache(StudentGroup group)
