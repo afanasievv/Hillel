@@ -45,14 +45,20 @@ class Program
         Console.Write("URL: ");
         string url = Console.ReadLine();
 
-        // Якщо необхідно передати параметри, використовуйте QueryString:
-        // string urlWithParams = $"{url}?param1=value1&param2=value2";
+        Dictionary<string, string> parameters = new Dictionary<string, string>
+        {
+            { "param1", "value1" },
+            { "param2", "value2" }
+        };
+
+        string fullUrl = url + "?" + BuildQueryString(parameters);
 
         using (HttpClient client = new HttpClient())
         {
-            HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await client.GetAsync(fullUrl);
             string responseBody = await response.Content.ReadAsStringAsync();
 
+            Console.WriteLine("Response:");
             Console.WriteLine(responseBody);
         }
     }
@@ -62,13 +68,23 @@ class Program
         Console.Write("URL: ");
         string url = Console.ReadLine();
 
-        // Приклад створення об'єкту для передачі у POST-запиті
-        // var requestData = new { Name = "John", Age = 30 };
+        Dictionary<string, string> parameters = new Dictionary<string, string>
+        {
+            { "param1", "value1" },
+            { "param2", "value2" }
+        };
 
-        // Для передачі параметрів через тіло запиту, використовуйте `HttpClient` і `PostAsync`
-        // HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json"));
+        using (HttpClient client = new HttpClient())
+        {
+            HttpContent content = new FormUrlEncodedContent(parameters);
 
-        Console.WriteLine("POST-запит не реалізовано в прикладі.");
+            HttpResponseMessage response = await client.PostAsync(url, content);
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine("Response:");
+            Console.WriteLine(responseBody);
+        }
+
     }
 
     static async Task SendPutRequest()
@@ -76,7 +92,22 @@ class Program
         Console.Write("URL: ");
         string url = Console.ReadLine();
 
-        Console.WriteLine("PUT-запит не реалізовано в прикладі.");
+        Dictionary<string, string> parameters = new Dictionary<string, string>
+        {
+            { "param1", "value1" },
+            { "param2", "value2" }
+        };
+
+        using (HttpClient client = new HttpClient())
+        {
+            HttpContent content = new FormUrlEncodedContent(parameters);
+
+            HttpResponseMessage response = await client.PutAsync(url, content);
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine("Response:");
+            Console.WriteLine(responseBody);
+        }
     }
 
     static async Task SendDeleteRequest()
@@ -84,12 +115,32 @@ class Program
         Console.Write("URL: ");
         string url = Console.ReadLine();
 
+        Dictionary<string, string> parameters = new Dictionary<string, string>
+        {
+            { "param1", "value1" },
+            { "param2", "value2" }
+        };
+
+        
+        string fullUrl = url + "?" + BuildQueryString(parameters);
+
         using (HttpClient client = new HttpClient())
         {
-            HttpResponseMessage response = await client.DeleteAsync(url);
+            HttpResponseMessage response = await client.DeleteAsync(fullUrl);
             string responseBody = await response.Content.ReadAsStringAsync();
 
+            Console.WriteLine("Response:");
             Console.WriteLine(responseBody);
         }
+
+    }
+    static string BuildQueryString(Dictionary<string, string> parameters)
+    {
+        var queryParameters = new List<string>();
+        foreach (var kvp in parameters)
+        {
+            queryParameters.Add($"{kvp.Key}={Uri.EscapeDataString(kvp.Value)}");
+        }
+        return string.Join("&", queryParameters);
     }
 }
