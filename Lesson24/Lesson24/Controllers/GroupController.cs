@@ -14,22 +14,26 @@ public class GroupController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] StudentGroup group)
     {
-        var validationResults = new List<ValidationResult>();
-        var validationContext = new ValidationContext(group);
-        if (!Validator.TryValidateObject(group, validationContext, validationResults, true))
+
+        if (ModelState.IsValid)
         {
-            var errorMessages = validationResults.Select(result => result.ErrorMessage);
-            return BadRequest(errorMessages);
+            if (!IsGroupInCache(group))
+            {
+                cachedGroups.Add(group);
+            }
+
+            return Ok(cachedGroups);
         }
-        if (!IsGroupInCache(group))
-        {
-            cachedGroups.Add(group);
-        }
-        return Ok(cachedGroups);
+
+        return BadRequest(ModelState);
     }
+
 
     private bool IsGroupInCache(StudentGroup group)
     {
         return cachedGroups.Any(g => g.Name == group.Name && g.Course == group.Course);
     }
 }
+
+
+    
